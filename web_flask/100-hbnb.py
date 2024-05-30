@@ -10,7 +10,7 @@ from flask import render_template
 app = Flask(__name__)
 
 
-@app.route('/hbnb_filters', strict_slashes=False)
+@app.route('/hbnb', strict_slashes=False)
 def states_list_route():
     """
     List all cities a of states: display a HTML page: (inside the tag BODY)
@@ -19,9 +19,10 @@ def states_list_route():
     """
     data = {
         "states": storage.all("State").values(),
+        "places": storage.all("Place").values(),
         "amenities": storage.all("Amenity").values()
     }
-    return render_template("10-hbnb_filters.html", models=data)
+    return render_template("100-hbnb.html", models=data)
 
 
 @app.teardown_appcontext
